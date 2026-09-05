@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>首爾7天・購物美食＋雪景</title>
+<style>
+  :root{
+    --night:#1B2A41;
+    --snow:#F7F9FC;
+    --ice:#CFE6F0;
+    --ink:#22303F;
+    --red:#C8443C;
+    --gold:#D9A441;
+    --muted:#6B7A8C;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--snow);color:var(--ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:inherit}
+
+  /* hero */
+  .hero{background:var(--night);color:#fff;padding:28px 20px 22px;position:relative;overflow:hidden}
+  .hero svg{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+  .hero .t{position:relative}
+  .hero h1{margin:0;font-size:28px;font-weight:700;letter-spacing:.02em;line-height:1.2}
+  .hero p{margin:8px 0 0;color:var(--ice);font-size:14px;line-height:1.5}
+  .hero .who{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .hero .who span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+    border-radius:999px;padding:4px 12px;font-size:13px}
+
+  /* tabs */
+  .tabs{position:sticky;top:0;z-index:5;background:var(--snow);border-bottom:2px solid var(--ice);
+    display:flex;overflow-x:auto;scrollbar-width:none;padding:0 8px}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;padding:12px 14px 10px;border:0;background:none;font:inherit;font-size:14px;
+    color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;cursor:pointer}
+  .tab b{display:block;font-size:16px;color:var(--ink)}
+  .tab.on{border-bottom-color:var(--red);color:var(--red)}
+  .tab.on b{color:var(--red)}
+  .tab:focus-visible{outline:2px solid var(--night);outline-offset:-2px}
+
+  /* day */
+  .day{display:none;padding:0 0 32px}
+  .day.on{display:block}
+  .card{margin:16px;border-radius:14px;overflow:hidden;background:#fff;
+    box-shadow:0 2px 10px rgba(27,42,65,.08)}
+  .card svg{display:block;width:100%;height:150px}
+  .card .h{padding:14px 16px 4px}
+  .card .h h2{margin:0;font-size:20px}
+  .card .h p{margin:4px 0 0;color:var(--muted);font-size:14px}
+
+  .stops{list-style:none;margin:0 16px;padding:0 0 0 22px;border-left:2px solid var(--ice)}
+  .stop{position:relative;padding:0 0 22px 14px}
+  .stop::before{content:"";position:absolute;left:-29px;top:6px;width:12px;height:12px;border-radius:50%;
+    background:#fff;border:3px solid var(--red)}
+  .stop.snow::before{border-color:var(--night)}
+  .stop.food::before{border-color:var(--gold)}
+  .time{font-size:12px;color:var(--muted)}
+  .stop h3{margin:2px 0 4px;font-size:17px}
+  .stop p{margin:0;font-size:14px;line-height:1.55}
+  .links{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+  .links a{text-decoration:none;font-size:13px;padding:6px 12px;border-radius:999px;
+    border:1px solid var(--ice);background:var(--snow)}
+  .links a.map{border-color:var(--night);color:var(--night)}
+  .links a.pic{border-color:var(--gold);color:#8a6414}
+
+  .note{margin:0 16px;padding:12px 14px;background:var(--ice);border-radius:10px;font-size:14px;line-height:1.55}
+
+  /* info page */
+  .info{padding:0 16px 40px}
+  .info h2{font-size:20px;margin:22px 0 10px}
+  .info table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:10px;overflow:hidden}
+  .info td{padding:10px 12px;border-bottom:1px solid var(--ice)}
+  .info td:last-child{text-align:right;white-space:nowrap}
+  .info li{margin:6px 0;font-size:14px;line-height:1.55}
+  .fine{font-size:12px;color:var(--muted);margin-top:8px}
+
+  footer{text-align:center;font-size:12px;color:var(--muted);padding:20px 16px 40px}
+  @media (prefers-reduced-motion:no-preference){
+    .day.on{animation:in .25s ease-out}
+    @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg viewBox="0 0 400 160" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2A41"/><stop offset="1" stop-color="#2E4A6B"/></linearGradient></defs>
+    <rect width="400" height="160" fill="url(#g)"/>
+    <g fill="#fff" opacity=".7">
+      <circle cx="30" cy="22" r="1.6"/><circle cx="90" cy="48" r="1.2"/><circle cx="150" cy="18" r="1.8"/><circle cx="210" cy="60" r="1.3"/>
+      <circle cx="280" cy="30" r="1.6"/><circle cx="340" cy="52" r="1.2"/><circle cx="380" cy="14" r="1.5"/><circle cx="120" cy="80" r="1.1"/><circle cx="250" cy="90" r="1.4"/>
+    </g>
+    <g fill="#0F1C2E">
+      <rect x="0" y="120" width="400" height="40"/>
+      <rect x="20" y="95" width="30" height="30"/><rect x="60" y="80" width="22" height="45"/><rect x="95" y="100" width="40" height="25"/>
+      <rect x="150" y="60" width="14" height="65"/><rect x="175" y="88" width="34" height="37"/><rect x="220" y="70" width="26" height="55"/>
+      <rect x="260" y="98" width="46" height="27"/><rect x="320" y="84" width="20" height="41"/><rect x="350" y="102" width="40" height="23"/>
+    </g>
+    <g fill="#F2C94C" opacity=".85">
+      <rect x="26" y="102" width="4" height="4"/><rect x="66" y="88" width="4" height="4"/><rect x="66" y="100" width="4" height="4"/>
+      <rect x="154" y="70" width="3" height="3"/><rect x="154" y="84" width="3" height="3"/><rect x="226" y="80" width="4" height="4"/>
+      <rect x="236" y="96" width="4" height="4"/><rect x="326" y="92" width="4" height="4"/>
+    </g>
+    <path d="M0 125 Q 200 110 400 125 L400 160 L0 160Z" fill="#E8F1F7"/>
+  </svg>
+  <div class="t">
+    <h1>首爾7天<br>購物美食＋雪景</h1>
+    <p>高雄直飛仁川・12月・住明洞不換飯店</p>
+    <div class="who"><span>啟強</span><span>老婆</span><span>姪女</span></div>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button class="tab on" data-d="1" role="tab"><b>Day 1</b>抵達・明洞</button>
+  <button class="tab" data-d="2" role="tab"><b>Day 2</b>古宮・東大門</button>
+  <button class="tab" data-d="3" role="tab"><b>Day 3</b>南怡島</button>
+  <button class="tab" data-d="4" role="tab"><b>Day 4</b>滑雪</button>
+  <button class="tab" data-d="5" role="tab"><b>Day 5</b>弘大・漢江</button>
+  <button class="tab" data-d="6" role="tab"><b>Day 6</b>江南</button>
+  <button class="tab" data-d="7" role="tab"><b>Day 7</b>回程</button>
+  <button class="tab" data-d="8" role="tab"><b>須知</b>預算・準備</button>
+</nav>
+
+<!-- DAY 1 -->
+<section class="day on" data-d="1">
+  <div class="card">
+    <svg viewBox="0 0 400 150" aria-hidden="true">
+      <rect width="400" height="150" fill="#CFE6F0"/>
+      <path d="M0 120 L400 120 L400 150 L0 150Z" fill="#fff"/>
+      <path d="M60 70 L300 70 L330 85 L300 100 L60 100 L40 85Z" fill="#fff" stroke="#1B2A41" stroke-width="3"/>
+      <path d="M150 70 L200 40 L230 40 L190 70Z" fill="#1B2A41"/>
+      <path d="M150 100 L200 130 L230 130 L190 100Z" fill="#1B2A41"/>
+      <path d="M300 70 L320 55 L335 55 L320 75Z" fill="#C8443C"/>
+      <circle cx="90" cy="85" r="4" fill="#1B2A41"/><circle cx="110" cy="85" r="4" fill="#1B2A41"/><circle cx="130" cy="85" r="4" fill="#1B2A41"/>
+      <text x="200" y="25" font-size="11" fill="#1B2A41" text-anchor="middle">KHH → ICN 約2.5小時</text>
+    </svg>
+    <div class="h"><h2>抵達・明洞暖身夜</h2><p>下午入住，晚上先感受首爾的冷與熱</p></div>
+  </div>
+  <ol class="stops">
+    <li class="stop"><div class="time">上午</div><h3>高雄小港 → 仁川機場</h3>
+      <p>出發前72小時內填好電子入境卡。落地後在機場買WOWPASS或T-money卡，三人各一張。</p></li>
+    <li class="stop"><div class="time">下午</div><h3>明洞飯店入住</h3>
+      <p>三人房選明洞或乙支路一帶，機場巴士6015直達，之後每天出門都方便。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/明洞站" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=명동+겨울" target="_blank">看照片</a></div></li>
+    <li class="stop food"><div class="time">晚上</div><h3>明洞街頭小吃 ＋ 烤肉</h3>
+      <p>第一晚先吃烤肉暖身，飯後逛美妝店和路邊攤（雞蛋糕、龍蝦串、糖餅）。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/明洞+烤肉" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=명동+길거리+음식" target="_blank">看照片</a></div></li>
+  </ol>
+</section>
+
+<!-- DAY 2 -->
+<section class="day" data-d="2">
+  <div class="card">
+    <svg viewBox="0 0 400 150" aria-hidden="true">
+      <rect width="400" height="150" fill="#E8F1F7"/>
+      <path d="M0 125 L400 125 L400 150 L0 150Z" fill="#fff"/>
+      <path d="M80 90 L320 90 L340 70 L60 70Z" fill="#8B3A3A"/>
+      <path d="M60 70 Q200 30 340 70" fill="#3E6B4F"/>
+      <path d="M70 70 Q200 45 330 70" fill="none" stroke="#fff" stroke-width="3"/>
+      <rect x="100" y="90" width="12" height="35" fill="#8B3A3A"/><rect x="190" y="90" width="12" height="35" fill="#8B3A3A"/><rect x="288" y="90" width="12" height="35" fill="#8B3A3A"/>
+      <rect x="120" y="98" width="60" height="27" fill="#C8443C"/><rect x="210" y="98" width="70" height="27" fill="#2E6B8A"/>
+      <g fill="#fff"><circle cx="40" cy="30" r="2"/><circle cx="120" cy="20" r="1.5"/><circle cx="250" cy="15" r="2"/><circle cx="360" cy="35" r="1.5"/></g>
+    </svg>
+    <div class="h"><h2>古宮・市場・東大門夜購</h2><p>上午文化，中午吃市場，晚上逛到深夜</p></div>
+  </div>
+  <ol class="stops">
+    <li class="stop"><div class="time">9:00</div><h3>景福宮</h3>
+      <p>穿韓服免門票，雪後的宮牆最好拍。10:00有守門將換崗儀式。週二休館。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/景福宮" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=경복궁+눈" target="_blank">看照片</a></div></li>
+    <li class="stop"><div class="time">上午</div><h3>北村韓屋村 → 仁寺洞</h3>
+      <p>坡道多，穿好走的鞋。仁寺洞找間傳統茶屋喝柚子茶、雙和茶。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/北村韓屋村" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=북촌한옥마을+겨울" target="_blank">看照片</a></div></li>
+    <li class="stop food"><div class="time">中午</div><h3>廣藏市場</h3>
+      <p>綠豆煎餅、麻藥飯捲、生拌牛肉、刀削麵。人多，站著吃也是體驗。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/廣藏市場" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=광장시장+빈대떡" target="_blank">看照片</a></div></li>
+    <li class="stop"><div class="time">晚上</div><h3>東大門DDP ＋ 批發商場</h3>
+      <p>DDP冬季有燈飾展。Doota、Migliore逛到深夜；批發樓層多為現金、不可試穿。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/東大門設計廣場" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=DDP+동대문+야경" target="_blank">看照片</a></div></li>
+  </ol>
+</section>
+
+<!-- DAY 3 -->
+<section class="day" data-d="3">
+  <div class="card">
+    <svg viewBox="0 0 400 150" aria-hidden="true">
+      <rect width="400" height="150" fill="#DCE9F2"/>
+      <path d="M0 110 Q100 60 200 110 T400 110 L400 150 L0 150Z" fill="#fff"/>
+      <g stroke="#3E5C4A" stroke-width="3"><line x1="80" y1="130" x2="80" y2="70"/><line x1="140" y1="130" x2="140" y2="60"/><line x1="200" y1="130" x2="200" y2="75"/><line x1="260" y1="130" x2="260" y2="62"/><line x1="320" y1="130" x2="320" y2="72"/></g>
+      <g fill="#fff" stroke="#9BB7C9" stroke-width="1.5"><ellipse cx="80" cy="66" rx="14" ry="6"/><ellipse cx="140" cy="56" rx="16" ry="6"/><ellipse cx="200" cy="71" rx="14" ry="6"/><ellipse cx="260" cy="58" rx="16" ry="6"/><ellipse cx="320" cy="68" rx="14" ry="6"/></g>
+      <g fill="#fff"><circle cx="30" cy="30" r="2"/><circle cx="110" cy="25" r="1.5"/><circle cx="230" cy="20" r="2"/><circle cx="350" cy="30" r="1.5"/><circle cx="180" cy="40" r="1.3"/></g>
+    </svg>
+    <div class="h"><h2>南怡島雪景一日</h2><p>建議直接報一日團，含來回車與三個點</p></div>
+  </div>
+  <ol class="stops">
+    <li class="stop snow"><div class="time">上午</div><h3>南怡島</h3>
+      <p>杉木道下雪時最經典，島上約2小時。渡輪來回，帶手套與暖暖包。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/南怡島" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=남이섬+겨울+눈" target="_blank">看照片</a></div></li>
+    <li class="stop snow"><div class="time">下午</div><h3>江村鐵路自行車</h3>
+      <p>四人車，三人剛好。沿舊鐵道約40分鐘，風大很冷，圍巾要包好。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/江村鐵路自行車" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=강촌+레일바이크+겨울" target="_blank">看照片</a></div></li>
+    <li class="stop snow"><div class="time">傍晚</div><h3>晨靜樹木園・五色星光燈節</h3>
+      <p>每年12月至隔年3月左右的燈飾展，天黑後入園最好看，回到首爾約晚上9點。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/晨靜樹木園" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=아침고요수목원+오색별빛정원전" target="_blank">看照片</a></div></li>
+  </ol>
+  <div class="note">三個點都在京畿道加平方向，自行搭車要轉ITX與公車，帶著長輩與行李不方便，一日團價差不大。</div>
+</section>
+
+<!-- DAY 4 -->
+<section class="day" data-d="4">
+  <div class="card">
+    <svg viewBox="0 0 400 150" aria-hidden="true">
+      <rect width="400" height="150" fill="#D5E6F3"/>
+      <path d="M0 150 L120 50 L200 110 L280 40 L400 150Z" fill="#fff"/>
+      <path d="M120 50 L100 66 L140 66Z M280 40 L258 58 L302 58Z" fill="#E8F1F7"/>
+      <path d="M150 130 L175 95 L200 130Z" fill="#1B2A41"/>
+      <line x1="120" y1="132" x2="180" y2="132" stroke="#C8443C" stroke-width="3"/>
+      <g fill="#fff"><circle cx="40" cy="30" r="2"/><circle cx="90" cy="20" r="1.5"/><circle cx="330" cy="25" r="2"/><circle cx="220" cy="20" r="1.5"/></g>
+    </svg>
+    <div class="h"><h2>滑雪一日團</h2><p>三人都是初學也沒關係，團體含教學</p></div>
+  </div>
+  <ol class="stops">
+    <li class="stop snow"><div class="time">全天</div><h3>維瓦爾第Park 或 伊利希安江村</h3>
+      <p>一日團通常含接駁、雪具、雪衣租借、基礎教學。從明洞出發約1.5小時，下午4點左右回程。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/Vivaldi+Park+Ski+World" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=비발디파크+스키장" target="_blank">看照片</a></div></li>
+    <li class="stop food"><div class="time">晚上</div><h3>新村・梨大晚餐</h3>
+      <p>滑完雪吃部隊鍋或雞排（닭갈비）補回體力，這一帶學生餐廳多、價格親民。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/新村+部隊鍋" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=부대찌개" target="_blank">看照片</a></div></li>
+  </ol>
+  <div class="note">如果有人不想滑雪，這天可改成愛寶樂園（冬季有燈光秀），或直接當成江南購物日。</div>
+</section>
+
+<!-- DAY 5 -->
+<section class="day" data-d="5">
+  <div class="card">
+    <svg viewBox="0 0 400 150" aria-hidden="true">
+      <rect width="400" height="150" fill="#1B2A41"/>
+      <path d="M0 105 Q200 90 400 105 L400 150 L0 150Z" fill="#2E4A6B"/>
+      <path d="M40 105 L360 105" stroke="#fff" stroke-width="4"/>
+      <g stroke="#9BB7C9" stroke-width="2"><line x1="90" y1="105" x2="90" y2="130"/><line x1="200" y1="105" x2="200" y2="135"/><line x1="310" y1="105" x2="310" y2="130"/></g>
+      <g fill="#F2C94C"><circle cx="90" cy="100" r="3"/><circle cx="150" cy="100" r="3"/><circle cx="200" cy="100" r="3"/><circle cx="255" cy="100" r="3"/><circle cx="310" cy="100" r="3"/></g>
+      <path d="M0 125 Q100 118 200 125 T400 125" fill="none" stroke="#F2C94C" stroke-width="1" opacity=".5"/>
+      <rect x="330" y="35" width="18" height="70" fill="#0F1C2E"/><rect x="335" y="45" width="3" height="3" fill="#F2C94C"/><rect x="341" y="60" width="3" height="3" fill="#F2C94C"/>
+      <g fill="#fff"><circle cx="40" cy="30" r="1.5"/><circle cx="120" cy="20" r="1.2"/><circle cx="230" cy="35" r="1.5"/></g>
+    </svg>
+    <div class="h"><h2>弘大・延南洞・漢江</h2><p>姪女最會喜歡的一天，年輕品牌與咖啡廳</p></div>
+  </div>
+  <ol class="stops">
+    <li class="stop"><div class="time">上午</div><h3>弘大購物街</h3>
+      <p>服飾、飾品、文具、唱片行。11點後店才陸續開，不用太早出門。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/弘大入口站" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=홍대+거리" target="_blank">看照片</a></div></li>
+    <li class="stop food"><div class="time">中午</div><h3>延南洞咖啡廳・京義線林道</h3>
+      <p>從弘大走過去10分鐘，沿廢棄鐵道改建的公園散步，兩側都是小店。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/延南洞+京義線林道" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=연남동+경의선숲길" target="_blank">看照片</a></div></li>
+    <li class="stop food"><div class="time">下午</div><h3>望遠市場</h3>
+      <p>在地人市場，炸雞、辣炒年糕、刀削麵，價格比廣藏便宜。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/望遠市場" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=망원시장" target="_blank">看照片</a></div></li>
+    <li class="stop"><div class="time">晚上</div><h3>汝矣島漢江公園</h3>
+      <p>在便利商店煮杯麵看漢江夜景是首爾人的日常。太冷可改上63大廈展望台。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/汝矣島漢江公園" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=여의도+한강공원+야경+겨울" target="_blank">看照片</a></div></li>
+  </ol>
+</section>
+
+<!-- DAY 6 -->
+<section class="day" data-d="6">
+  <div class="card">
+    <svg viewBox="0 0 400 150" aria-hidden="true">
+      <rect width="400" height="150" fill="#E8F1F7"/>
+      <path d="M0 130 L400 130 L400 150 L0 150Z" fill="#fff"/>
+      <path d="M190 130 L200 15 L210 130Z" fill="#1B2A41"/>
+      <path d="M180 130 L200 40 L220 130Z" fill="#2E4A6B" opacity=".6"/>
+      <rect x="60" y="80" width="60" height="50" fill="#9BB7C9"/><rect x="130" y="95" width="40" height="35" fill="#B9CFDD"/>
+      <rect x="240" y="90" width="50" height="40" fill="#B9CFDD"/><rect x="300" y="75" width="45" height="55" fill="#9BB7C9"/>
+      <ellipse cx="120" cy="140" rx="70" ry="6" fill="#CFE6F0"/>
+      <g fill="#F2C94C"><circle cx="70" cy="140" r="2"/><circle cx="100" cy="142" r="2"/><circle cx="140" cy="141" r="2"/><circle cx="170" cy="139" r="2"/></g>
+    </svg>
+    <div class="h"><h2>江南・樂天世界塔</h2><p>集中採購日，晚上把免稅店逛完</p></div>
+  </div>
+  <ol class="stops">
+    <li class="stop"><div class="time">上午</div><h3>COEX 星空圖書館</h3>
+      <p>拍照地標，同棟就是COEX Mall，有大型書店與各種品牌。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/星空圖書館+COEX" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=별마당도서관" target="_blank">看照片</a></div></li>
+    <li class="stop"><div class="time">中午</div><h3>新沙洞林蔭道</h3>
+      <p>設計師品牌與餐廳，價位比弘大高，適合找午餐與逛精品。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/新沙洞林蔭道" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=가로수길" target="_blank">看照片</a></div></li>
+    <li class="stop"><div class="time">下午</div><h3>樂天世界塔 Seoul Sky</h3>
+      <p>500公尺高展望台，冬天空氣乾淨能見度好。下面石村湖12月有燈飾。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/樂天世界塔" target="_blank">地圖</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=롯데월드타워+석촌호수+겨울" target="_blank">看照片</a></div></li>
+    <li class="stop"><div class="time">晚上</div><h3>樂天百貨・免稅店</h3>
+      <p>免稅品要提早買，機場提貨。百貨地下街晚餐後回明洞。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/樂天免稅店+蠶室" target="_blank">地圖</a></div></li>
+  </ol>
+</section>
+
+<!-- DAY 7 -->
+<section class="day" data-d="7">
+  <div class="card">
+    <svg viewBox="0 0 400 150" aria-hidden="true">
+      <rect width="400" height="150" fill="#CFE6F0"/>
+      <path d="M0 120 L400 120 L400 150 L0 150Z" fill="#fff"/>
+      <path d="M340 70 L100 70 L70 85 L100 100 L340 100 L360 85Z" fill="#fff" stroke="#1B2A41" stroke-width="3"/>
+      <path d="M250 70 L200 40 L170 40 L210 70Z" fill="#1B2A41"/>
+      <path d="M250 100 L200 130 L170 130 L210 100Z" fill="#1B2A41"/>
+      <path d="M100 70 L80 55 L65 55 L80 75Z" fill="#C8443C"/>
+      <text x="200" y="25" font-size="11" fill="#1B2A41" text-anchor="middle">ICN → KHH</text>
+    </svg>
+    <div class="h"><h2>最後補貨・回高雄</h2><p>退稅單整理好再出門</p></div>
+  </div>
+  <ol class="stops">
+    <li class="stop"><div class="time">上午</div><h3>明洞最後補貨</h3>
+      <p>忘了買的美妝與伴手禮。單筆滿一定金額的即時退稅店家可直接折扣，不必到機場辦。</p></li>
+    <li class="stop"><div class="time">中午</div><h3>仁川機場</h3>
+      <p>提早3小時到。有退稅單先去海關櫃檯蓋章，再到免稅店提貨處領貨。</p>
+      <div class="links"><a class="map" href="https://www.google.com/maps/search/仁川國際機場" target="_blank">地圖</a></div></li>
+    <li class="stop"><div class="time">晚上</div><h3>抵達高雄</h3><p>行程結束。</p></li>
+  </ol>
+</section>
+
+<!-- INFO -->
+<section class="day info" data-d="8">
+  <h2>每人預算概估</h2>
+  <table>
+    <tr><td>機票 高雄⇄仁川（12月旺季）</td><td>12,000–18,000</td></tr>
+    <tr><td>三人房6晚（三人平攤）</td><td>8,000–12,000</td></tr>
+    <tr><td>南怡島一日團＋滑雪一日團</td><td>4,000–6,000</td></tr>
+    <tr><td>餐飲・交通・門票 7天</td><td>10,000–12,000</td></tr>
+    <tr><td><b>合計（不含購物）</b></td><td><b>約 35,000–48,000</b></td></tr>
+  </table>
+  <p class="fine">單位新台幣。屬粗估區間，確定日期後再查實際票價與房價。</p>
+
+  <h2>出發前要辦的事</h2>
+  <ul>
+    <li>台灣護照在2026年底前免申請K-ETA，但抵達前72小時內要填電子入境卡（e-Arrival Card），三人各填一份。</li>
+    <li>護照效期6個月以上。</li>
+    <li>行動電源、暖暖包不能託運，要放隨身行李。</li>
+    <li>網路：三人各買eSIM，或一張分享器。</li>
+    <li>換匯：台灣先換一部分韓元，其餘用WOWPASS在當地機台換。</li>
+  </ul>
+
+  <h2>12月穿著</h2>
+  <ul>
+    <li>首爾12月平均約 -5～5°C，近郊與滑雪場更冷。</li>
+    <li>發熱衣＋毛衣＋長羽絨外套，帽子、手套、圍巾必備。</li>
+    <li>鞋子要防滑，路面結冰很常見。</li>
+    <li>室內暖氣強，穿脫方便的洋蔥式最好。</li>
+  </ul>
+
+  <h2>三人分工建議</h2>
+  <ul>
+    <li>一人管機票、飯店與一日團訂單。</li>
+    <li>一人管餐廳口袋名單與排隊時間。</li>
+    <li>一人管退稅單與購物清單。</li>
+  </ul>
+</section>
+
+<footer>版本 v1・2026年9月草案・日期確定後再更新航班與飯店</footer>
+
+<script>
+  const tabs=document.querySelectorAll('.tab'),days=document.querySelectorAll('.day');
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>x.classList.toggle('on',x===t));
+    days.forEach(d=>d.classList.toggle('on',d.dataset.d===t.dataset.d));
+    window.scrollTo({top:0,behavior:'smooth'});
+    t.scrollIntoView({inline:'center',block:'nearest'});
+  }));
+</script>
+</body>
+</html>
